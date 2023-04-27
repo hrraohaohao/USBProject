@@ -53,13 +53,10 @@ public class USBHelper {
      * @return
      */
     public static UsbConnection getConnection(UsbDevice usbDevice) {
-
         for (int i = 0; i < usbDevice.getInterfaceCount(); i++) {
             UsbInterface usbInterface = usbDevice.getInterface(i);
-            if (usbInterface.getInterfaceClass() == UsbConstants.USB_CLASS_MASS_STORAGE
-                    && usbInterface.getInterfaceSubclass() == 0x06
-                    && usbInterface.getInterfaceProtocol() == 0x50) {
-                //每个存储设备一定有两个端点：in 和 out
+            if (usbInterface.getInterfaceClass() == UsbConstants.USB_CLASS_PRINTER &&
+                    usbInterface.getInterfaceSubclass() == 1) {
                 UsbEndpoint outEndpoint = null, inEndpoint = null;
                 for (int j = 0; j < usbInterface.getEndpointCount(); j++) {
                     UsbEndpoint endpoint = usbInterface.getEndpoint(j);

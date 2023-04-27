@@ -7,7 +7,7 @@ import java.util.concurrent.locks.ReentrantLock;
  * @version 1.0
  * @data 2023/4/6
  */
-public class BaseUSB {
+public class MIO {
 
     public final ReentrantLock mMainLocker = new ReentrantLock();
 
@@ -17,6 +17,13 @@ public class BaseUSB {
 
     public int Read(byte[] buffer, int offset, int count, int timeout) {
         return -1;
+    }
+
+    public void SkipAvailable() {
+    }
+
+    public boolean IsOpened() {
+        return true;
     }
 
 }
